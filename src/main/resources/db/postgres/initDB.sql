@@ -16,6 +16,7 @@ CREATE INDEX idx_specialties_name ON specialties (name);
 CREATE TABLE vet_specialties (
 	vet_id integer NOT NULL,
 	specialty_id integer NOT NULL,
+
 	FOREIGN KEY (vet_id) REFERENCES vets (id),
 	FOREIGN KEY (specialty_id) REFERENCES specialties (id),
 	CONSTRAINT unique_ids UNIQUE (vet_id,specialty_id)
@@ -45,6 +46,7 @@ CREATE TABLE pets (
 	birth_date date,
 	type_id integer NOT NULL,
 	owner_id integer NOT NULL,
+
 	FOREIGN KEY (type_id) REFERENCES types (id),
 	FOREIGN KEY (owner_id) REFERENCES owners (id),
 	CONSTRAINT pk_pets PRIMARY KEY (id)
@@ -58,4 +60,5 @@ CREATE TABLE visits (
 	description character varying(255),
 	FOREIGN KEY (pet_id) REFERENCES pets (id),
 	CONSTRAINT pk_visits PRIMARY KEY (id)
+
 );
